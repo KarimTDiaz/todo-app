@@ -1,4 +1,11 @@
-html {
-}
+
 body {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: var(--primary-font);
+    background-color: var(--very-light-grayish-blue);
+    background-image: url(assets/images/bg-desktop-light.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
 }

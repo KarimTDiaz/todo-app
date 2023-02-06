@@ -1,1 +1,9 @@
+@use '../mixins/flexbox.scss' as*;
 
+.header{
+    @include flexbox(flex,row,nowrap,space-between,center);
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3rem;
+}

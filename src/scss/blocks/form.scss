@@ -1,0 +1,7 @@
+@use '../mixins/pseudo.scss' as*;
+.input{
+    width: 550px;
+    border-radius: 5px;
+    border: none;
+    height: 3.5rem;
+}
