@@ -11,6 +11,7 @@ const clearBtnElement = document.getElementById('clear');
 inputTaskElement.addEventListener('submit', ev => {
   ev.preventDefault();
   createTasks(ev.target.todo.value);
+
   ev.target.todo.value = '';
 });
 
