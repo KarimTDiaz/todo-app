@@ -22,9 +22,8 @@
 }
 
 .tasks{
-
     &__items{
-
+        
     }
     &__item{
         @include flexbox(flex,row-reverse,nowrap,start,center);
@@ -34,6 +33,13 @@
         padding-left: 3rem;
         border-radius: 5px;
         background-color: var(--very-light-gray);
+    }
+    &__starter-screen{
+        @include flexbox(flex,column,nowrap,center,center);
+        height: 7rem;
+        width: 100%;
+        background-color: var(--very-light-gray);
+        border-radius:5px;
     }
 }
 
