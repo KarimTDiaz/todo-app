@@ -1,15 +1,19 @@
 const taskItemsElement = document.getElementById('task-items');
+const leftButtonElement = document.getElementById('items-left');
 const getTimeStamp = () => Date.now();
 let tasksArray = [];
+let itemsLeft = 0;
 
 const taskPrint = fragment => {
   taskItemsElement.innerHTML = '';
   taskItemsElement.append(fragment);
 };
 
-const createTasks = tasksArray => {
+const createTasks = tasks => {
+  itemsLeft = tasks.filter(task=>!task.checked).length
+  setItemsLeft()
   const fragment = document.createDocumentFragment();
-  tasksArray.forEach(task => {
+  tasks.forEach(task => {
     const taskItemElement = document.createElement('div');
     const taskLabel = document.createElement('label');
     const taskInput = document.createElement('input');
@@ -21,7 +25,7 @@ const createTasks = tasksArray => {
     taskInput.id = task.id;
     taskInput.checked = task.checked;
     taskInput.type = 'checkbox';
-    taskInput.classList.add('input-checked');
+    taskInput.classList.add('input-none-view');
     crossElement.src = 'assets/images/icon-cross.svg';
     crossElement.classList.add('cross');
     taskItemElement.append(taskLabel, taskInput, crossElement);
@@ -39,16 +43,10 @@ const createTaskObj = task => {
   tasksArray.push(newObj);
   createTasks(tasksArray);
 };
-
-const removeTask = id => {
-  let arrayFiltered = tasksArray.filter(task => Number(id) !== task.id);
-  tasksArray = arrayFiltered;
-  createTasks(tasksArray);
-};
-
+// filtro para cambiar de true a false en checked
 const completedTask = id => {
   let arrayFiltered = tasksArray.map(task => {
-    console.log(task.id);
+    
     if (Number(id) === task.id) {
       task.checked = !task.checked;
     }
@@ -57,17 +55,47 @@ const completedTask = id => {
   tasksArray = arrayFiltered;
   createTasks(tasksArray);
 };
-
-const filterTasks = ev => {
-  console.log(ev);
+// filtro para eliminar con la cruz la tarea
+const removeTask = id => {
+  let arrayFiltered = tasksArray.filter(task => Number(id) !== task.id);
+  tasksArray = arrayFiltered;
+  createTasks(tasksArray);
 };
+
+const filterAllTask = () => {
+  createTasks(tasksArray)
+}
+
+const filterTaskActive = () => {
+  let arrayFiltered = tasksArray.filter(task => !task.checked)
+  createTasks(arrayFiltered)
+};
+
+const filterTaskComplete = () => {
+  let arrayFiltered = tasksArray.filter(task => task.checked)
+  createTasks(arrayFiltered)
+}
+
+const clearCompleteTask = () => {
+  let arrayFiltered = tasksArray.filter(task => !task.checked);
+  tasksArray = arrayFiltered;
+  createTasks(arrayFiltered)
+}
+
+const setItemsLeft = () => {
+  leftButtonElement.textContent = itemsLeft + ' items left'
+}
+
 
 export {
   createTasks,
   createTaskObj,
   taskItemsElement,
-  tasksArray,
   removeTask,
   completedTask,
-  filterTasks
+  filterTaskActive,
+  filterTaskComplete,
+  filterAllTask,
+  clearCompleteTask,
+  setItemsLeft
 };

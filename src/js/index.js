@@ -5,21 +5,21 @@ import {
   taskItemsElement,
   removeTask,
   completedTask,
-  filterTasks
+  filterTaskActive,
+  filterTaskComplete,
+  filterAllTask,
+  clearCompleteTask,
+  setItemsLeft
 } from './tasks.js';
 
 const inputTaskElement = document.getElementById('create-todo');
-const activeBtnElement = document.getElementById('active');
-const completedBtnElement = document.getElementById('completed');
-const clearBtnElement = document.getElementById('clear');
-
 const filterElements = document.getElementById('task-filters');
 
 inputTaskElement.addEventListener('submit', ev => {
   ev.preventDefault();
   createTaskObj(ev.target.todo.value);
-
   ev.target.todo.value = '';
+  setItemsLeft()
 });
 
 taskItemsElement.addEventListener('click', ev => {
@@ -30,10 +30,17 @@ taskItemsElement.addEventListener('click', ev => {
   if (ev.target.tagName === 'LABEL') {
     completedTask(ev.target.htmlFor);
   }
+
 });
 
 filterElements.addEventListener('click', ev => {
   if (ev.target.classList.contains('button--active')) {
-    filterTasks(ev.target);
+    filterTaskActive();
+  } else if(ev.target.classList.contains('button--completed')){
+    filterTaskComplete();
+  } else if(ev.target.classList.contains('button--all')){
+    filterAllTask()
+  } else if(ev.target.classList.contains('button--clear')){
+    clearCompleteTask()
   }
 });

@@ -6,16 +6,23 @@
     <!-- PON UN FAVICON!!! -->
     <link rel="icon" type="image/svg+xml" href="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- CAMBIA EL TITLE!!! -->
     <title>Vite Template</title>
   </head>
   <body>
     <header class="header">
       <h1 class="title">TODO</h1>
-      <img src="assets/images/icon-moon.svg" alt="Icono de Luna" class="icon icon--theme">
+      <img
+        src="assets/images/icon-moon.svg"
+        alt="Icono de Luna"
+        class="icon icon--theme"
+      />
     </header>
     <main class="main">
       <form id="create-todo">
@@ -29,17 +36,17 @@
         />
       </form>
       <div class="tasks">
-        <div id="task-items" class="tasks__items">
-         <!-- <div id="starter-screen" class="tasks__starter-screen">
-          <p>No todo items left!</p>
-         </div> -->
-        </div>
+        <div id="task-items" class="tasks__items"></div>
         <div id="task-filters" class="tasks__filters">
-          <span class="items-left">0items left</span>
+          <span id="items-left" class="items-left">0 items left</span>
           <button class="button button--all">All</button>
           <button id="active" class="button button--active">Active</button>
-          <button id="completed" class="button button--completed">Completed</button>
-          <button id="clear" class="button button--completed-clear">Clear Completed</button>
+          <button id="completed" class="button button--completed">
+            Completed
+          </button>
+          <button id="clear" class="button button--clear">
+            Clear Completed
+          </button>
         </div>
       </div>
     </main>
